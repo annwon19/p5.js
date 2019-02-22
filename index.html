@@ -1,0 +1,81 @@
+<html>
+  <head>
+  <script src="p5.min.js"></script>
+  </head>
+  <body>
+    <button onclick="faster()">Faster</button>
+    <button onclick="slower()">Slower</button>
+
+    <script>
+    var w=window.innerWidth;
+    var h=window.innerHeight;
+    var r;
+    var g;
+    var b;
+    
+    var posX=w/2;
+    var posY=h/2;
+    var posX1=w/2;
+    var posY1=h/2;
+    var low=-10;
+    var high=10;
+    
+      function faster(){
+        high+=10;
+        low+=-10;
+      }
+      function slower(){
+        low+=10;
+        high+=-10;
+      }
+      
+      function setup(){
+        createCanvas(w,h);
+      }
+      
+      function draw(){
+        //random colors
+          r=random(200,256);
+          g=random(200,256);
+          b=random(200,256);
+        //rgba color
+          //background(color(255,105,180));
+        //ellipse value 1= starting position of x
+        //ellipse value 1= radius of x
+        //ellipse value of 2= starting position of y
+        //ellipse value 2= radius of y
+        strokeWeight(0);
+        //chooses random colors using rgb
+        fill(color(r,g,b));
+          //shape (circle size)
+          //var c=random(50);
+        //x and y will change every second generating random numbers (position where it is filling it in)
+        var randX=random(low,high);
+        var randY=random(low,high);
+        var randX1=random(low,high);
+        var randY1=random(low,high);
+        //fills in the space
+        posX+=randX;
+        posY+=randY;
+        posX1+=randX1;
+        posY1+=randY1;
+        //randomizes without moving the mouse around, size of the mouse
+          //rect(posX,posY,5,5);
+        ellipse(posX,posY,10,10);
+        ellipse(posX1, posY1, 25,25);
+
+      //if the current position is less than the left side of the screen OR the current position is greater than the right side of the screen back to the center.
+    
+        if ((posX<10) || (posX>(w-10)) || (posY<10) || (posY>(h-10))) {
+          posX=w/2;
+          posY=h/2;
+        }
+        
+        if ((posX1<10) || (posX1>(w-10)) || (posY1<10) || (posY1>(h-10))) {
+          posX1=w/2;
+          posY1=h/2;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<html>
+  <head>
+  <script src="p5.min.js"></script>
+  </head>
+  <body>
+    <style>
+      body{
+        overflow:hidden;
+        padding:0;
+        margin:0;
+      }
+      #box{
+        height:100px;
+        width:100px;
+        right:0;
+      }
+    </style>
+  <script>
+//i would like the user to enter r,g,b values //those values will be used as colors
+var w=window.innerWidth;
+var h=window.innerHeight;
+var weight=3;
+var r;
+var g;
+var b;
+var red=0;
+var green=0;
+var blue=0;
+
+<div id=userColor>
+  <input type="number" id="red" min="0" max="255">
+  <input type="number" id="green" min="0" max="255">
+  <input type="number" id="blue" min="0" max="255">
+
+    function setup(){
+      createCanvas(w,h);
+    }
+    
+    //works constantly
+    function draw(){
+      if (mouseIsPressed){
+        strokeWeight(stroke);
+        
+    //start at 0,0 x1,y1 and ends at 200,200 x2,y2 (px)
+      //line (0,0,random(20,500),random(20,500));
+      line(pmouseX,pmouseY,mouseX,mouseY);
+      
+      }
+    }
+  
+    function keyPressed(){
+        /*r=random(256);
+        g=random(256);
+        b=random(256);
+      */
+//increases stroke size
+     if (keyCode =="38"){
+       weight+=1;
+    }
+//decreases stroke size
+     if (keyCode=="40"){
+      weight-=1;
+    }
+//save as jpg on computer
+    if (keyCode=="83"){
+      var x=prompt("what do you call this?");
+      //saves image as jpg
+      save (x+".jpg");
+    }
+    if (keyCode=="13"){
+    var red=document.getElementById=('r').value;
+    var green=document.getElementById=('g').value;
+    var blue=document.getElementById=('b').value;
+    stroke(color(red,green,blue));
+    document.getElementById('box');
+    .style.backgroundColor="rgb("+[red,green,blue].join(',')+")";
+}
+//when I press the r key, the line will be red
+    /*if (keyCode=="82"){
+      stroke('red');
+    }
+//when I press the g key, the line will be green
+    if (keyCode=="71"){
+      stroke('green')
+// when I press the q key, randomize the color
+    }
+    if (keyCode=="81"){
+      stroke(color(r,g,b));
+    }
+  }*/
+  </script>
+  </body>
+</html>
