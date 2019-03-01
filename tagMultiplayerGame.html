@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <script src= "p5.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      #title {
+        text-align: center;
+        font-size: 50px;
+        font-family: sans-serif;
+      }
+      #loser{
+        text-align: center;
+        font-size: 100px;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <h1 id= "title">Play</h1>
+    <h1 id= "loser"></h1>
+    <script>
+      var w= window.innerWidth;
+      var h= window.innerHeight;
+      //creating a new object globally. It has to be "new" then the object name
+      var ball= new ball();
+      var ball2= new ball2();
+      var d;
+      
+      function setup() {
+        createCanvas(w,h);
+      }
+      
+      
+      function draw() {
+      //reference to functions
+        background(255);
+        ball.show();
+        ball.move();
+        
+        ball2.show();
+        ball2.move();
+        ball2.kill();
+      }
+      
+      function ball() {
+      //x, and y axis is at 100
+        this.x= 100;
+        this.y= 100;
+        
+        //"this" means the ball, and the position is (100,100)
+        this.show= function() {
+          fill(color('red'));
+          strokeWeight(0);
+          ellipse(this.x, this.y, 100, 100);
+        };
+        
+        this.move= function() {
+          if ((keyIsDown(68)) && (this.x<w -50)) { //Right D
+            this.x +=10;
+          }
+          if ((keyIsDown(65)) && (this.x>50)) { //Left A
+            this.x -= 10;
+          }
+          if ((keyIsDown(87)) && (this.y>50)) { //Up W
+            this.y -= 10;
+          }
+          if ((keyIsDown(83)) && (this.y<h-50)) { //Down S
+            this.y += 10;
+          }
+        }
+      }
+      
+      function ball2() {
+        this.x= 200;
+        this.y= 200;
+        
+        this.show= function() {
+          fill(color('blue'));
+          strokeWeight(0);
+          ellipse(this.x, this.y, 100, 100);
+        };
+        
+        this.move= function() {
+          if ((keyIsDown(39)) && (this.x<w-50)) { //Right Key
+            this.x +=10;
+          }
+          if ((keyIsDown(37)) && (this.x>50)) { //Left Key
+            this.x -= 10;
+          }
+          if ((keyIsDown(38)) && (this.y>50)) { //Up Key
+            this.y -= 10;
+          }
+          if ((keyIsDown(40)) && (this.y<h-50)) { //Down Key
+            this.y += 10;
+          }
+        };
+        
+        this.kill= function() {
+          //dist takes the x and y position of the first object and measures the pixels between the x and y position of the second object
+          d= dist(this.x, this.y, ball.x, ball.y);
+          if (d<50) {
+            noLoop();
+            document.getElementById('loser').innerHTML= "YOU LOSE ):";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
