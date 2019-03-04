@@ -29,10 +29,13 @@
       //creating a new object globally. It has to be "new" then the object name
       var ball= new ball();
       var ball2= new ball2();
+      var ball3=new ball3();
+      //distance when one ball touches the other
       var d;
-      
+      //var img;
       function setup() {
         createCanvas(w,h);
+      //img
       }
       
       
@@ -45,11 +48,14 @@
         ball2.show();
         ball2.move();
         ball2.kill();
+        
+        ball3.show();
+        ball3.fast();
       }
       
       function ball() {
       //x, and y axis is at 100
-        this.x= 100;
+        this.x= 70;
         this.y= 100;
         
         //"this" means the ball, and the position is (100,100)
@@ -57,6 +63,8 @@
           fill(color('red'));
           strokeWeight(0);
           ellipse(this.x, this.y, 100, 100);
+          //image(img,x,y,100,100);
+
         };
         
         this.move= function() {
@@ -76,8 +84,8 @@
       }
       
       function ball2() {
-        this.x= 200;
-        this.y= 200;
+        this.x= 1300;
+        this.y= 100;
         
         this.show= function() {
           fill(color('blue'));
@@ -101,14 +109,35 @@
         };
         
         this.kill= function() {
-          //dist takes the x and y position of the first object and measures the pixels between the x and y position of the second object
+        //dist takes the x and y position of the first object and measures the pixels between the x and y position of the second object
           d= dist(this.x, this.y, ball.x, ball.y);
-          if (d<50) {
+          if (d<80) {
             noLoop();
             document.getElementById('loser').innerHTML= "YOU LOSE ):";
           }
         }
       }
+      
+      function ball3(){
+          //this.x= 300;
+          //this.y= 300;
+          this.x=w/2;
+          this.y=h/2;
+          
+         this.show= function() {
+          fill(color('black'));
+          strokeWeight(0);
+          ellipse(this.x, this.y, 10, 10);
+        };
+        
+         this.fast= function() {
+          d= dist(this.x, this.y, ball.x, ball.y);
+          if (d<80) {
+            noLoop();
+          }
+        }
+      }
+      
     </script>
   </body>
 </html>
