@@ -33,9 +33,15 @@
       //distance when one ball touches the other
       var d;
       //var img;
+      var posX=w/2;
+      var posY=h/2;
+      
       function setup() {
         createCanvas(w,h);
       //img
+      //createImage(w,h);
+      //imageMode(CENTER);
+      //image(img,0,0);
       }
       
       
@@ -64,7 +70,6 @@
           strokeWeight(0);
           ellipse(this.x, this.y, 100, 100);
           //image(img,x,y,100,100);
-
         };
         
         this.move= function() {
@@ -77,10 +82,11 @@
           if ((keyIsDown(87)) && (this.y>50)) { //Up W
             this.y -= 10;
           }
-          if ((keyIsDown(83)) && (this.y<h-50)) { //Down S
+          if ((keyIsDown(83)) && (this.y<h-200)) { //Down S
             this.y += 10;
           }
         }
+        
       }
       
       function ball2() {
@@ -103,9 +109,11 @@
           if ((keyIsDown(38)) && (this.y>50)) { //Up Key
             this.y -= 10;
           }
-          if ((keyIsDown(40)) && (this.y<h-50)) { //Down Key
+          if ((keyIsDown(40)) && (this.y<h-200)) { //Down Key
             this.y += 10;
           }
+          //posY+=10;
+          //posX+=10;
         };
         
         this.kill= function() {
@@ -132,8 +140,11 @@
         
          this.fast= function() {
           d= dist(this.x, this.y, ball.x, ball.y);
-          if (d<80) {
+          if (d<0) {
             noLoop();
+            this.x+=10;
+            this.y+=10;
+            
           }
         }
       }
