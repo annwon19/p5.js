@@ -7,7 +7,3 @@ function platform(){
           rect(this.x, this.y, 100, 50);
       }
 }
-
-  this.update=function(){
-
-  }

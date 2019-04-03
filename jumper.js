@@ -31,5 +31,9 @@
       function keyPressed(){
         if (keyCode===32){
           jumper.up();
+          
+        if (keyCode===39){
+          jumper.right();
+        }
         }
       }

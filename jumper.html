@@ -23,6 +23,7 @@
       var h= window.innerHeight;
       var jumper= new jumper();
       var barrier= new barrier();
+      var platform= new platform();
       var hit=false;
       
       function setup(){
@@ -39,7 +40,7 @@
         
         platform.show();
 
-        hit = collideRectCircle(jumper.rectX,jumper.rectY,barrier.x,barrier.y,100);
+        hit = collideRectCircle(barrier.x,barrier.y,50,50,jumper.x, jumper.y, 50);
       }
     
       
