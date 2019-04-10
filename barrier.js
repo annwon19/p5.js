@@ -24,5 +24,6 @@ function barrier(){
             this.y = Math.floor(Math.random() * h + 100);
             this.x = w + 50;
         }
-    }
+          
+        }
 }
