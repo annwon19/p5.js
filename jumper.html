@@ -7,20 +7,30 @@
 
   <script src="jumper.js"></script>
   <script src="barrier.js"></script>
-  <script src="platform.js"></script>
+  <script src="barrier2.js"></script>
+  <script src="barrier3.js"></script>
+  
 
   <style>
     body {
       margin: 0;
       padding: 0;
       overflow: hidden;
+      background-image:url("space.png");
+      background-repeat:no-repeat;
+      background-size:cover;
+      
     }
+    #loser{
+        text-align: center;
+        font-size: 100px;
+        font-family: sans-serif;
   </style>
   
 </head>
 
 <body>
-      <h1 id= "loser"></h1>
+    <h1 id= "loser"></h1>
 
   <script>
     var w = window.innerWidth;
@@ -29,14 +39,16 @@
     var barrier = new barrier();
     var platform = new platform();
     var hit = false;
-    var d;
 
     function setup() {
-      createCanvas(w, h);
+      createCanvas(w,h);
+      /*bg = loadImage('download.jpeg'); */
     }
-
+      
     function draw() {
-      background(0);
+      background("rgba(255,255,255,0)");
+      clear()
+      //image(image,0,0);
       jumper.show();
       jumper.update();
 
@@ -44,15 +56,21 @@
       barrier.update();
 
       platform.show();
+      platform.update();
       
       hit = collideRectCircle(barrier.x, barrier.y, 50, 50, jumper.x, jumper.y, 50);
       if (keyIsDown(LEFT_ARROW)) {
         jumper.x -= 5;
       }
-
+      
       if (keyIsDown(RIGHT_ARROW)) {
         jumper.x += 5;
       }
+      
+    document.addEventListener('keyup', function(e){
+     if(e.keyCode == 82) //press R to refresh
+     window.location.reload();
+})
     }
   </script>
 </body>

@@ -7,7 +7,7 @@ function barrier(){
         
       this.show= function() {
           fill(color('white'));
-          rect(this.x, this.y, 50, 50);
+          rect(this.x, this.y, 50, 100);
           //math.floor(math.random());
       }
       
@@ -21,9 +21,8 @@ function barrier(){
         this.velocity*=0.95; //air resistance
         if (this.x < 0 - 50) {
             this.velocity = 0;
-            this.y = Math.floor(Math.random() * h + 100);
+            this.y = Math.floor(Math.random()* h + 100);
             this.x = w + 50;
         }
-          
         }
 }
