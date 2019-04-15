@@ -9,11 +9,11 @@ function barrier(){
           fill(color('white'));
           rect(this.x, this.y, 50, 100);
           //math.floor(math.random());
-      }
+      };
       
       this.up=function(){
         this.velocity+=this.lift;  //jumping function
-      }
+      };
       
       this.update=function(){
         this.velocity+=this.gravity; //gravity applied when not jumping
@@ -24,5 +24,5 @@ function barrier(){
             this.y = Math.floor(Math.random()* h + 100);
             this.x = w + 50;
         }
-        }
+        };
 }

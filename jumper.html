@@ -9,7 +9,6 @@
   <script src="barrier.js"></script>
   <script src="barrier2.js"></script>
   <script src="barrier3.js"></script>
-  
 
   <style>
     body {
@@ -21,33 +20,53 @@
       background-size:cover;
       
     }
-    #loser{
-        text-align: center;
-        font-size: 100px;
+    
+    #instructions{
+        text-align: left;
+        font-size: 20px;
         font-family: sans-serif;
+        color:white;
+    }
+    
+    #score{
+        text-align: left;
+        font-size: 20px;
+        font-family: sans-serif;
+        color:white;
+    }
+    
   </style>
-  
 </head>
 
 <body>
-    <h1 id= "loser"></h1>
+    <h1 id= "instructions">Press the space bar to jump and dodge the lasers.</h1>
+    <h1 id= "instructions">(restart: press R)</h1>
+    <h1 id= "score">Score:</h1>
+
 
   <script>
     var w = window.innerWidth;
     var h = window.innerHeight;
+    var posX=w/2;
+    var posY=h/2;
     var jumper = new jumper();
     var barrier = new barrier();
     var platform = new platform();
     var hit = false;
-
+    let scoreGame;
+    
     function setup() {
       createCanvas(w,h);
       /*bg = loadImage('download.jpeg'); */
+      
+      //scoreGame=createDiv=('Score=0');
+      // scoreGame.id='score';
+      //scoreGame.style('color','white');
     }
       
     function draw() {
       background("rgba(255,255,255,0)");
-      clear()
+      clear();
       //image(image,0,0);
       jumper.show();
       jumper.update();
@@ -58,20 +77,22 @@
       platform.show();
       platform.update();
       
-      hit = collideRectCircle(barrier.x, barrier.y, 50, 50, jumper.x, jumper.y, 50);
+      /*hit = collideRectCircle(barrier.x, barrier.y, 50, 50, jumper.x, jumper.y, 50);
       if (keyIsDown(LEFT_ARROW)) {
         jumper.x -= 5;
       }
       
       if (keyIsDown(RIGHT_ARROW)) {
         jumper.x += 5;
-      }
+      } */
       
     document.addEventListener('keyup', function(e){
      if(e.keyCode == 82) //press R to refresh
      window.location.reload();
 })
     }
+    
+    
   </script>
 </body>
 

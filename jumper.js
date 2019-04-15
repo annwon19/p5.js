@@ -36,6 +36,7 @@ function jumper() {
             noLoop();
     }
     };
+    
      } //object ends
   function keyPressed() {
        if (keyCode === 32) { //Space bar to jump up
