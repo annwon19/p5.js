@@ -9,11 +9,11 @@ function platform(){
   this.show= function() {
           fill(color('blue'));
           rect(this.x, this.y, 100, 50);
-      }
+      };
       
   this.up=function(){
         this.velocity+=this.lift;  //jumping function
-      }
+      };
       
       this.update=function(){
         this.velocity+=this.gravity; //gravity applied when not jumping
@@ -24,5 +24,5 @@ function platform(){
             this.y = Math.floor(Math.random()* h + 100);
             this.x = w + 50;
         }
-        }
+        };
 }

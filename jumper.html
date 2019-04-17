@@ -3,12 +3,10 @@
 <head>
   <script src="p5.min.js"></script>
   <script src="p5.collide2d.min.js"></script>
-
-
+  
   <script src="jumper.js"></script>
   <script src="barrier.js"></script>
   <script src="barrier2.js"></script>
-  <script src="barrier3.js"></script>
 
   <style>
     body {
@@ -24,24 +22,35 @@
     #instructions{
         text-align: left;
         font-size: 20px;
-        font-family: sans-serif;
+        font-family: "Courier New", Courier, monospace;
         color:white;
+        
     }
     
     #score{
         text-align: left;
-        font-size: 20px;
-        font-family: sans-serif;
+        font-size: 30px;
+        font-family: Arial,sans-serif;
         color:white;
     }
+    
+    #loser{
+        text-align: center;
+        font-size: 30px;
+        font-family: Arial,sans-serif;
+        color:red;
+    }
+    
     
   </style>
 </head>
 
 <body>
     <h1 id= "instructions">Press the space bar to jump and dodge the lasers.</h1>
-    <h1 id= "instructions">(restart: press R)</h1>
+    <h1 id= "instructions">(Restart: press 'R')</h1>
     <h1 id= "score">Score:</h1>
+    <h1 id= "loser"></h1>
+
 
 
   <script>
@@ -52,16 +61,19 @@
     var jumper = new jumper();
     var barrier = new barrier();
     var platform = new platform();
-    var hit = false;
-    let scoreGame;
-    
+    var hit;
+    //let scoreGame;
+
     function setup() {
       createCanvas(w,h);
       /*bg = loadImage('download.jpeg'); */
       
       //scoreGame=createDiv=('Score=0');
-      // scoreGame.id='score';
+      //scoreGame.id='score';
       //scoreGame.style('color','white');
+      
+      //let img=createImage(100,100);
+      //img.loadPixels();
     }
       
     function draw() {
@@ -70,6 +82,7 @@
       //image(image,0,0);
       jumper.show();
       jumper.update();
+      jumper.kill();
 
       barrier.show();
       barrier.update();
@@ -77,6 +90,7 @@
       platform.show();
       platform.update();
       
+      //move with left and right arrows
       /*hit = collideRectCircle(barrier.x, barrier.y, 50, 50, jumper.x, jumper.y, 50);
       if (keyIsDown(LEFT_ARROW)) {
         jumper.x -= 5;

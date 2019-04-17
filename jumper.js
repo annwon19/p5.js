@@ -1,9 +1,9 @@
 function jumper() {
        this.x = 50;
-       this.y = 0;
+       this.y = 50;
        this.gravity = 0.5; //this force of gravity
        this.lift = -10; //jump up, opposing force of grav
-       this.velocity = 0; //velocity of player
+       this.velocity = 15; //velocity of player
 
   this.show = function () {
          fill(color('red'));
@@ -13,7 +13,6 @@ function jumper() {
   this.up = function () {
          this.velocity += this.lift; //jumping function
        };
-
 
   this.update = function () {
          this.velocity += this.gravity; //gravity applied when not jumping
@@ -30,14 +29,14 @@ function jumper() {
        };
        
   this.kill=function(){
-      hit = collideRectCircle(barrier.x, barrier.y, 50, 50, jumper.x, jumper.y, 50);
+      hit = collideRectCircle(barrier.x, barrier.y, jumper.x, jumper.y,100);
             if (hit===true) {
             document.getElementById('loser').innerHTML= "Game Over";
             noLoop();
     }
     };
-    
      } //object ends
+     
   function keyPressed() {
        if (keyCode === 32) { //Space bar to jump up
          jumper.up();
