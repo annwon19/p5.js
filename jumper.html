@@ -3,7 +3,8 @@
 <head>
   <script src="p5.min.js"></script>
   <script src="p5.collide2d.min.js"></script>
-  
+  <script src="p5.sound.min.js"></script>
+
   <script src="jumper.js"></script>
   <script src="barrier.js"></script>
   <script src="barrier2.js"></script>
@@ -23,7 +24,7 @@
         text-align: left;
         font-size: 20px;
         font-family: "Courier New", Courier, monospace;
-        color:red;
+        color:yellow;
         
     }
     
@@ -36,7 +37,7 @@
     
     #loser{
         text-align: center;
-        font-size: 30px;
+        font-size: 80px;
         font-family: Arial,sans-serif;
         color:red;
     }
@@ -61,11 +62,29 @@
     var jumper = new jumper();
     var barrier = new barrier();
     var platform = new platform();
-    var hit;
-    //let scoreGame;
+    var hit=false;
+    var sound;
+    var score=0;
 
+    //audio
+    function preload() {
+      //sound=loadSound('laser.mp3');
+
+      //soundFormats('mp3');
+      //mySound = loadSound('laser.mp3');    
+      
+      //image for barrier
+      //laser=loadImage('laser.png');
+      
+    //let scoreGame;
+    }
     function setup() {
       createCanvas(w,h);
+
+      //mySound.setVolume(1);
+      //mySound.play();
+
+      
       /*bg = loadImage('download.jpeg'); */
       
       //scoreGame=createDiv=('Score=0');
@@ -81,14 +100,15 @@
       clear();
       //image(image,0,0);
       jumper.show();
-      jumper.update();
-      jumper.kill();
+      jumper.update(); 
 
       barrier.show();
       barrier.update();
-
+      barrier.kill();
+      
       platform.show();
       platform.update();
+      platform.kill();
       
       //move with left and right arrows
       /*hit = collideRectCircle(barrier.x, barrier.y, 50, 50, jumper.x, jumper.y, 50);
@@ -106,6 +126,8 @@
 })
     }
     
+    //document.getElementById('score').innerHTML = "Score: "+ score;
+
     
   </script>
 </body>
