@@ -9,6 +9,7 @@
       function preload(){
         img=loadImage('treetexture.jpg');
       }
+      
       function setup(){
         createCanvas(window.innerWidth,window.innerHeight,WEBGL);
         
@@ -21,8 +22,8 @@
         directionalLight(255,255,255,-locX,-locY,-5);     //flashlight
         specularMaterial(255);                          //shining
         noStroke();
-        rotateX(mouseX/700);
-        rotateY(mouseY/700);
+        rotateX(mouseY/700);  //inverted X bound to Y
+        rotateY(mouseX/700);  //inverted
         texture(img);
         //sphere(200);
         box(200);
