@@ -1,0 +1,62 @@
+<html>
+  <head>
+  <script src="p5.min.js"></script>
+  <script src="p5.geolocation.js"></script>
+  </head>
+<body>
+  <script>
+  var fence;
+  var polygon=[
+    {lat:21.312016,lon:-157.838460},
+    {lat:21.312026,lon:-157.838369},
+    {lat:21.311851,lon:-157.838967},
+    {lat:21.311806,lon:-157.838380}
+    
+  ]
+  
+  function setup(){
+    if (geoCheck()==true){
+      console.log('geolocation is true');
+      window.alert("true");
+  }
+    else{
+      window.alert("false");
+      //$.getElementById('')
+  }
+  }
+  
+  fenceOptions={
+    enableHighAccuracy:true;
+    time:2000;
+  }
+  
+  
+  //distance in miles, how far away
+  //fence=new geoFencePolygon(polygon, insideTheFence, outsideTheFence, 'mi');
+  
+  
+  function insideTheFence(position){
+  
+      document.body.style.backgroundColor="green";
+  }
+  
+  function outsideTheFence(position){
+      document.body.style.backgroundColor="red";
+  }
+  
+  
+  function positioning(position){
+    mylat=postition.latitiude;
+    mylon=position.longitude;
+    disturb=calcGeoDistance(mylat,mylon,treasurelat,treaturelon,'mi');
+    $.getElementById('distance').innerHTML="You are"+ distance.toFixed(5);
+    if (distance<0.008){
+      $.getElementById('locAvail').innerHTML="You have found the treasure";
+      $.body
+    }
+  }
+  
+  </script>
+</body>
+
+</html>
