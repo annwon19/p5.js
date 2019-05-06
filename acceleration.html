@@ -1,0 +1,39 @@
+<html>
+  <head>
+      <script src="p5.min.js"></script>
+  </head>
+  <body>
+    <h1 id="ax"></h1>
+    <h1 id="ay"></h1>
+
+  <script>
+    var ax;
+    var ay;
+    //var arrayY=[];
+    //var arrayX=[];
+    var xHigh=0;
+    var yHigh=0;
+    function setup(){
+      createCanvas(window.innerWidth,window.innerHeight);
+    }
+    function draw(){
+      ax=accelerationX;
+        if (ax<xHigh);
+        xHigh=ax;
+        document.getElementById('ax'),innerHTML=xHigh;
+      //arrayX.push(ax);
+      //arrayX.sort(function(a,b){
+        //return(b-a); //b to a (high to low)
+
+      }
+      
+      /*ay=accelerationY;
+      arrayY.push(ay);
+      
+      document.getElementById('ay').innerHTML=ax;
+      
+    } */
+  </script>
+  
+  </body>
+</html>
