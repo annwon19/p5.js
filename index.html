@@ -18,16 +18,19 @@
       createCanvas(window.innerWidth,window.innerHeight);
     }
     function draw(){
-      ax=accelerationX;
+      rx=rotationX.toFixed(0);
+      //ax=accelerationX;
         if (ax<xHigh);
-        xHigh=ax;
-        document.getElementById('ax').innerHTML=xHigh;
+        //prevx=rx;
+        xHigh=rx;
+        
+        //document.getElementById('ax').innerHTML=xHigh;
       //arrayX.push(ax);
       //arrayX.sort(function(a,b){
         //return(b-a); //b to a (high to low)
 
       }
-      document.getElementById('rx').innerHTML=;
+        document.getElementById('rx').innerHTML="X Rotation:"+rx;
       /*ay=accelerationY;
       arrayY.push(ay);
       
